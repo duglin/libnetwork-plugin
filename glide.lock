@@ -1,5 +1,5 @@
 hash: 20036ab064bdc53939eacf8abba140295689caa725b111814f963072186388a2
-updated: 2016-11-30T13:39:52.231294385-08:00
+updated: 2016-11-30T23:23:04.68812565Z
 imports:
 - name: github.com/blang/semver
   version: 31b736133b98f26d5e078ec9eb591666edfd091f
@@ -73,14 +73,14 @@ imports:
   - network
   - sdk
 - name: github.com/docker/go-units
-  version: 8a7beacffa3009a9ac66bad506b18ffdd110cf97
+  version: e30f1e79f3cd72542f2026ceec18d3bd67ab859c
 - name: github.com/emicklei/go-restful
   version: 89ef8af493ab468a45a42bb0d89a06fccdd2fb22
   subpackages:
   - log
   - swagger
 - name: github.com/ghodss/yaml
-  version: a54de18a07046d8c4b26e9327698a2ebb9285b36
+  version: 73d445a93680fa1a78ae23a5839bad48f32ba1ee
 - name: github.com/go-openapi/jsonpointer
   version: 46af16f9f7b149af66e5d1bd010e3574dc06de98
 - name: github.com/go-openapi/jsonreference
@@ -150,7 +150,7 @@ imports:
 - name: github.com/satori/go.uuid
   version: b061729afc07e77a8aa4fad0a2fd840958f1942a
 - name: github.com/Sirupsen/logrus
-  version: 42b84f9ec624953ecbf81a94feccb3f5935c5edf
+  version: d26492970760ca5d33129d2d799e34be5c4782eb
 - name: github.com/spf13/pflag
   version: 5644820622454e71517561946e3d94b9f9db6842
 - name: github.com/ugorji/go

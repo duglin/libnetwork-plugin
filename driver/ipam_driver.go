@@ -130,8 +130,9 @@ func (i IpamDriver) RequestAddress(request *ipam.RequestAddressRequest) (*ipam.R
 		log.Println("Auto assigning IP from Calico pools")
 
 		// If the poolID isn't the fixed one then find the pool to assign from.
-		// poolV4 defaults to nil to assign from across all pools.
-		var poolV4 []caliconet.IPNet
+		// poolV4 defaults to empty to assign from across all pools.
+		poolV4 := []caliconet.IPNet{}
+
 		if request.PoolID != PoolIDV4 {
 			poolsClient := i.client.IPPools()
 			_, ipNet, err := caliconet.ParseCIDR(request.PoolID)
@@ -149,12 +150,12 @@ func (i IpamDriver) RequestAddress(request *ipam.RequestAddressRequest) (*ipam.R
 				log.Errorln(err)
 				return nil, err
 			}
-			poolV4 = []caliconet.IPNet{caliconet.IPNet{IPNet: pool.Metadata.CIDR.IPNet}}
+			poolV4 = append(poolV4, caliconet.IPNet{IPNet: pool.Metadata.CIDR.IPNet})
 			log.Debugln("Using specific pool ", poolV4)
 		}
 
 		// Auto assign an IP address.
-		// IPv4 pool will be nil if the docker network doesn't have a subnet associated with.
+		// IPv4 pool will be empty if the docker network doesn't have a subnet associated with.
 		// Otherwise, it will be set to the Calico pool to assign from.
 		IPsV4, IPsV6, err := i.client.IPAM().AutoAssign(
 			datastoreClient.AutoAssignArgs{
